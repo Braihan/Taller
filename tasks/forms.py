@@ -17,12 +17,11 @@ class TareasForm(forms.ModelForm):
 class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
-        fields = ['nombre','documento','telefono','direccion','correo','ruc']
+        fields = ['nombre','documento','telefono','correo','ruc']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre y apellido'}),
             'documento': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Numero de documento'}),
             'telefono': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Numero de telefono'}),
-            'direccion': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Direccion'}),
             'correo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese un correo'}),
             'ruc' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el ruc'}),
         }

@@ -12,7 +12,6 @@ class Cliente(models.Model):
     nombre = models.TextField(blank=False)
     documento = models.PositiveIntegerField(blank=False, validators=[RegexValidator(r'^[0-9]+$')])
     telefono =  models.PositiveIntegerField(blank=False, validators=[RegexValidator(r'^[0-9]{9,12}$')])
-    direccion = models.TextField(blank=False)
     correo = models.EmailField(blank=False)
     ruc = models.CharField(max_length=25, null=True, validators=[RegexValidator(regex=r'^[0-9-]+$')])
     
