@@ -4,7 +4,7 @@
 <main class="container">
     <div class="row">
         <div class="col-md-5 offset-md-3">
-            <h1 class="text-center display-3 py-5">Clientes</h1>
+            <h1 class="text-center display-3 py-5">Lista de clientes</h1>
             <ul class="list-group">
                 {% for listaclientes in Cliente %}
                     <a class="list-group-item" href="{% url 'detallecliente' listaclientes.id %}">
