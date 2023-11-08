@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-3">
+            <h1 class="text-center display-3 py-5">Clientes</h1>
+            <ul class="list-group">
+                {% for listaclientes in Cliente %}
+                    <a class="list-group-item" href="{% url 'detallecliente' listaclientes.id %}">
+                        <header class="d-flex justify-content-between">
+                            <h1 class="fw-bold" style="text-align: center;">{{listaclientes.nombre}}</h1>
+                        </header>
+                        <ul class="list-group">
+                            <li class="list-group-item">Numero de documento: {{listaclientes.documento}}</li>
+                            <li class="list-group-item">Ruc: {{listaclientes.ruc}}</li>
+                            <li class="list-group-item">Numero de telefono: {{listaclientes.telefono}}</li>
+                            <li class="list-group-item">Direccion: {{listaclientes.direccion}}</li>
+                            <li class="list-group-item">Correo: {{listaclientes.correo}}</li>
+                        </ul>
+
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+{% endblock %}
