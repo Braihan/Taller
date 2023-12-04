@@ -7,32 +7,30 @@
   
             <h1>Crear orden de trabajo</h1>
             {{error}}
-            <form action="/tareas/creartarea/" method="POST" class="card card-body" style="border: 1px solid; height: 800px;top: 4%;left: 10%; width: 1800px; " >
+            <form action="/tareas/creartarea/" method="POST" class="card card-body" style="border: 1px solid; height: 900px;top: 5%;left: 5%; width: 1800px; " >
                 {% csrf_token %}
                 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
                 <div class="container-fluid" id="main-content">
-                    <div class="col-4 mt--4" style=" height: 300px;top: 4%;left: 0%; width: 200px;" >
+                    <div class="col-4 mt--4" style=" height: 300px;top: 4%;left: 87%; width: 200px;" >
                         <label for="nombre">Nombre y apellido</label>
                         <input type="text" name="nombre" class="form-control" placeholder="Nombre y apellido">
                     </div>
-                    <div class="col-4 mt--4" style=" height: 300px;top: -10%;left: 0%; width: 200px;">
+                    <div class="col-4 mt--4" style=" height: 300px;top: -10%;left: 87%; width: 200px;">
                         <label for="telefono">Telefono</label>
                         <input type="text" name="telefono" class="form-control" placeholder="Telefono">
                     </div>
-                            <div class="row offset-md-3 mt-4" >
-                                <div class="col-5 mt-4">
-                                    <label for="trabajosolicitado">Trabajo solicitado por el cliente</label>
-                                    <input type="text" name="trabajosolicitado" class="form-control" placeholder="Trabajo solicitado por el cliente" style="border: 1px solid; height: 150px; width: 300px;">
-                                </div>
-                                <div class="col-5 mt-4" >
-                                    <label for="trabajoarealizar">Trabajo a realizar</label>
-                                    <input type="text" name="trabajoarealizar" class="form-control" placeholder="Escribe una descripcion del trabajo realizado"style="border: 1px solid; height: 150px; width: 300px;">
-                                </div>
-                                <div class="col-5 mt-4" >
-                                    <label for="observaciones">Observaciones</label>
-                                    <input type="text" name="observaciones" class="form-control" placeholder="Observaciones"style="border: 1px solid; height: 150px; width: 300px;">
-                                </div>
-                            </div>
+                    <div class=".card" >
+                        <div  style=" height: 50px;top: 10%;left: 30%; width: 500px;">
+                            <label for="trabajosolicitado">Trabajo solicitado por el cliente</label>
+                            <input type="text" name="trabajosolicitado" class="form-control" placeholder="Trabajo solicitado por el cliente" style="border: 1px solid; height: 150px; width: 300px;">
+                        </div>
+                        <div class="col-1 mt--1" style=" height: 50px;top: -80%;left: 65%; width: 200px;">
+                            <label for="trabajoarealizar">Trabajo a realizar</label>
+                            <input type="text" name="trabajoarealizar" class="form-control" placeholder="Escribe una descripcion del trabajo realizado"style="border: 1px solid; height: 150px; width: 300px;">
+                        </div>
+                        <div class="col-5 mt-4" >
+                            <label for="observaciones">Observaciones</label>
+                            <input type="text" name="observaciones" class="form-control" placeholder="Observaciones"style="border: 1px solid; height: 150px; width: 300px;">
                         </div>
                     </div>
                     <div class="col-5 mt-4">
@@ -43,6 +41,7 @@
                             Guardar
                         </button>
                     </div>
+                </div>
             </form>   
 </main>
 

@@ -79,21 +79,21 @@ def detalletarea(request, tarea_id):
         except ValueError:
             return render(request, 'detallestarea.html', {'tareas': tareas, 'formt': formt, 'error': 'Error al actualizar la tarea'})
         
-#@login_required
-#def detalletareacliente(request):
-    #if request.method == 'GET':
-       # cliente = get_object_or_404(Cliente)
-       # formc = ClienteForm(instance=cliente)
-        #return render(request, 'detallestarea.html', {'cliente': cliente, 'formc': formc})
-    #else:
-        #try:
+@login_required
+def detalletareacliente(request):
+    if request.method == 'GET':
+        cliente = get_object_or_404(Cliente)
+        formc = ClienteForm(instance=cliente)
+        return render(request, 'detallestarea.html', {'cliente': cliente, 'formc': formc})
+    else:
+        try:
             
-            #cliente = get_object_or_404(Cliente)
-            #formc = ClienteForm(request.POST, instance=cliente)
-            #formc.save()
-            #return redirect('tareas')
-        #except ValueError:
-            #return render(request, 'detallestarea.html', {'cliente': cliente, 'formc': formc, 'error': 'Error al actualizar la tarea'})       
+            cliente = get_object_or_404(Cliente)
+            formc = ClienteForm(request.POST, instance=cliente)
+            formc.save()
+            return redirect('tareas')
+        except ValueError:
+            return render(request, 'detallestarea.html', {'cliente': cliente, 'formc': formc, 'error': 'Error al actualizar la tarea'})       
 
 @login_required
 def tareaenproceso(request, tarea_id):
@@ -173,7 +173,7 @@ def crearcliente(request):
             form = ClienteForm(request.POST)
             nuevo_cliente = form.save(commit=False)
             nuevo_cliente.save()
-            return redirect('creartarea')
+            return redirect('tareas')
 
         except:
             return render(request, 'clientenuevo.html', {

@@ -5,13 +5,13 @@ from .models import Tareas, Cliente
 class TareasForm(forms.ModelForm):
     class Meta:
         model = Tareas
-        fields = ['trabajosolicitado', 'trabajoarealizar', 'observaciones', 'nombret', 'telefonot']
+        fields = ['trabajosolicitado', 'trabajoarealizar', 'observaciones', 'nombre', 'telefono']
         widgets = {
             'trabajosolicitado': forms.Textarea(attrs={'class': 'form-control'}),
             'trabajoarealizar': forms.Textarea(attrs={'class': 'form-control'}),
             'observaciones': forms.Textarea(attrs={'class': 'form-control'}),
-            'nombret': forms.Textarea(attrs={'class': 'form-control'}),
-            'telefonot': forms.Textarea(attrs={'class': 'form-control'}),
+            'nombre': forms.Textarea(attrs={'class': 'form-control'}),
+            'telefono': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
         
