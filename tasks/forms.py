@@ -5,11 +5,13 @@ from .models import Tareas, Cliente
 class TareasForm(forms.ModelForm):
     class Meta:
         model = Tareas
-        fields = ['trabajosolicitado', 'trabajoarealizar', 'observaciones']
+        fields = ['trabajosolicitado', 'trabajoarealizar', 'observaciones', 'nombret', 'telefonot']
         widgets = {
-            'trabajosolicitado': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Trabajo solicitado por el cliente'}),
-            'trabajoarealizar': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escribe una descripcion'}),
-            'observaciones': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Obsevaciones'}),
+            'trabajosolicitado': forms.Textarea(attrs={'class': 'form-control'}),
+            'trabajoarealizar': forms.Textarea(attrs={'class': 'form-control'}),
+            'observaciones': forms.Textarea(attrs={'class': 'form-control'}),
+            'nombret': forms.Textarea(attrs={'class': 'form-control'}),
+            'telefonot': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
         
@@ -19,9 +21,11 @@ class ClienteForm(forms.ModelForm):
         model = Cliente
         fields = ['nombre','documento','telefono','correo','ruc']
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Nombre y apellido'}),
-            'documento': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Numero de documento'}),
-            'telefono': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Numero de telefono'}),
-            'correo': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese un correo'}),
-            'ruc' : forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese el ruc'}),
+            'nombre': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Nombre y apellido'}),
+            'documento': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Numero de documento'}),
+            'telefono': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Numero de telefono'}),
+            'correo': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese un correo'}),
+            'ruc' : forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese el ruc'}),
         }
+        
+        #(label="Fecha", widget=forms.DateInput(attrs={'class': 'form-control', 'format': 'Y-m-d'})),

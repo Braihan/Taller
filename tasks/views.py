@@ -7,8 +7,6 @@ from .forms import TareasForm, ClienteForm
 from .models import Tareas, Cliente
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator
-
 
 # Create your views here.p
 def home(request):
@@ -65,22 +63,37 @@ def creartarea(request):
                 'form': TareasForm,
                 'error': 'Ingrese datos validos'
             })
-
+            
 @login_required
 def detalletarea(request, tarea_id):
     if request.method == 'GET':
         tareas = get_object_or_404(Tareas, pk=tarea_id)
-        form = TareasForm(instance=tareas)
-        return render(request, 'detallestarea.html', {'tareas': tareas, 'form': form})
+        formt = TareasForm(instance=tareas)
+        return render(request, 'detallestarea.html', {'tareas': tareas, 'formt': formt})
     else:
         try:
             tareas = get_object_or_404(Tareas, pk=tarea_id)
-            form = TareasForm(request.POST, instance=tareas)
-            form.save()
+            formt = TareasForm(request.POST, instance=tareas)
+            formt.save()
             return redirect('tareas')
         except ValueError:
-            return render(request, 'detallestarea.html', {'tareas': tareas, 'form': form, 'error': 'Error al actualizar la tarea'})
+            return render(request, 'detallestarea.html', {'tareas': tareas, 'formt': formt, 'error': 'Error al actualizar la tarea'})
         
+#@login_required
+#def detalletareacliente(request):
+    #if request.method == 'GET':
+       # cliente = get_object_or_404(Cliente)
+       # formc = ClienteForm(instance=cliente)
+        #return render(request, 'detallestarea.html', {'cliente': cliente, 'formc': formc})
+    #else:
+        #try:
+            
+            #cliente = get_object_or_404(Cliente)
+            #formc = ClienteForm(request.POST, instance=cliente)
+            #formc.save()
+            #return redirect('tareas')
+        #except ValueError:
+            #return render(request, 'detallestarea.html', {'cliente': cliente, 'formc': formc, 'error': 'Error al actualizar la tarea'})       
 
 @login_required
 def tareaenproceso(request, tarea_id):
@@ -96,6 +109,7 @@ def borrartarea(request, tarea_id):
     if request.method == 'POST':
         tareas.delete()
         return redirect('tareas')
+    
 
 @login_required
 def signout(request):

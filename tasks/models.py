@@ -7,6 +7,8 @@ class Tareas(models.Model):
     observaciones = models.TextField(blank=True)
     creado = models.DateTimeField(auto_now_add=True)
     completado = models.DateTimeField(null=True, blank=True)
+    nombret = models.TextField(max_length=100, blank=False)
+    telefonot =  models.PositiveIntegerField(blank=False, validators=[RegexValidator(r'^[0-9]{9,12}$')])
     
 class Cliente(models.Model):
     nombre = models.TextField(blank=False)
