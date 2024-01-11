@@ -7,7 +7,7 @@ class Tareas(models.Model):
     observaciones = models.TextField(blank=True)
     creado = models.DateTimeField(auto_now_add=True)
     completado = models.DateTimeField(null=True, blank=True)
-    nombre = models.CharField(max_length=255, default="Sin nombre")
+    nombre = models.CharField(max_length=255)
     telefono =  models.PositiveIntegerField(default=0)
     
 class Cliente(models.Model):

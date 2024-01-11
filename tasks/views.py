@@ -68,8 +68,8 @@ def creartarea(request):
 def detalletarea(request, tarea_id):
     if request.method == 'GET':
         tareas = get_object_or_404(Tareas, pk=tarea_id)
-        formt = TareasForm(instance=tareas)
-        return render(request, 'detallestarea.html', {'tareas': tareas, 'formt': formt})
+        form = TareasForm(instance=tareas)
+        return render(request, 'detallestarea.html', {'tareas': tareas, 'form': form})
     else:
         try:
             tareas = get_object_or_404(Tareas, pk=tarea_id)
