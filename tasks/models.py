@@ -16,6 +16,14 @@ class Cliente(models.Model):
     telefono =  models.PositiveIntegerField(blank=False, validators=[RegexValidator(r'^[0-9]{9,12}$')])
     correo = models.EmailField(blank=False)
     ruc = models.CharField(max_length=25, null=True, validators=[RegexValidator(regex=r'^[0-9-]+$')])
+
+
+class Stock(models.Model):
+    codigo = models.PositiveIntegerField(blank=False, validators=[RegexValidator(r'^[0-9]+$')])
+    nombre = models.TextField(blank=False)
+    especificacion = models.TextField(blank=False)
+    cantidad = models.PositiveIntegerField(blank=False, validators=[RegexValidator(r'^[0-9]+$')])
+    precio = models.PositiveIntegerField(blank=False, validators=[RegexValidator(r'^[0-9]+$')])
     
     
     def __str__(self):

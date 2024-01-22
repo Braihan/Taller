@@ -1,5 +1,5 @@
 from django import forms
-from .models import Tareas, Cliente
+from .models import Tareas, Cliente, Stock
 
 
 class TareasForm(forms.ModelForm):
@@ -28,4 +28,17 @@ class ClienteForm(forms.ModelForm):
             'ruc' : forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese el ruc'}),
         }
         
-        #(label="Fecha", widget=forms.DateInput(attrs={'class': 'form-control', 'format': 'Y-m-d'})),
+class StockForm(forms.ModelForm):
+    class Meta:
+        model = Stock
+        fields = ['codigo','nombre','especificacion','cantidad','precio']
+        widgets = {
+            'codigo': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Numero de documento'}),
+            'nombre': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Nombre y apellido'}),
+            'especificacion' : forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese el ruc'}),
+            'cantidad': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Numero de telefono'}),
+            'precio': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Ingrese un correo'}),
+        }
+     
+     
+     

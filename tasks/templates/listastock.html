@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-5 offset-md-3">
+            <h1 class="text-center display-3 py-5">Listado de stock</h1>
+            <ul class="list-group">
+                {% for listastock in Stock %}
+                    <a class="list-group-item" href="{% url 'detallestock' listastock.id %}">
+                        <header class="d-flex justify-content-between">
+                            <h1 class="fw-bold" style="text-align: center;">{{listastock.nombre}}</h1>
+                        </header>
+                        <ul class="list-group">
+                            <li class="list-group-item">Nombre: {{listastock.nombre}}</li>
+                        </ul>
+
+                    </a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</main>
+{% endblock %}

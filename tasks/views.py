@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from .forms import TareasForm, ClienteForm
-from .models import Tareas, Cliente
+from .forms import TareasForm, ClienteForm, StockForm
+from .models import Tareas, Cliente, Stock
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -180,3 +180,52 @@ def crearcliente(request):
                 'form': ClienteForm,
                 'error': 'Error al registrar cliente'
             })
+            
+
+@login_required
+def crearstock(request):
+    if request.method == 'GET':
+        return render(request, 'cargarstock.html', {
+            'form': StockForm
+        })
+    else:
+        try:
+            form = StockForm(request.POST)
+            nuevo_stock = form.save(commit=False)
+            nuevo_stock.save()
+            return redirect('tareas')
+
+        except:
+            return render(request, 'cargarstock.html', {
+                'form': StockForm,
+                'error': 'Error al registrar nuevo producto de stock'
+            })
+            
+@login_required
+def listadostock(request):
+    stock = Stock.objects.all()
+    return render(request, 'listastock.html', {'Stock': stock})
+
+
+@login_required
+def detallestock(request, stock_id):
+    if request.method == 'GET':
+        stocks = get_object_or_404(Stock, pk=stock_id)
+        form = StockForm(instance=stocks)
+        return render(request, 'detallestock.html', {'stocks': stocks, 'form': form})
+    else:
+        try:
+            stocks = get_object_or_404(Stock, pk=stock_id)
+            form = StockForm(request.POST,instance=stocks)
+            form.save()
+            return redirect('listastock')
+        except ValueError:
+            return render(request, 'detallestock.html', {'stocks': stocks, 'form': form, 'error': 'Error al actualizar stock'})
+
+@login_required
+def borrarstock(request, stock_id):
+    stock = get_object_or_404(Stock, pk=stock_id)
+    if request.method == 'POST':
+        stock.delete()
+        return redirect('listastock')
+    
